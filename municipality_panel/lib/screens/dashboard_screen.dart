@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:municipality_panel/screens/complaints_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -11,7 +11,8 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   final String fixedMunicipalityId = "1234567"; // Fixed municipality ID
-  String municipalityName = "Loading..."; // Default loading state for municipality name
+  String municipalityName =
+      "Loading..."; // Default loading state for municipality name
   String provinceName = "Loading..."; // Default loading state for province name
 
   @override
@@ -29,7 +30,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
       if (docSnapshot.exists) {
         setState(() {
-          municipalityName = docSnapshot.data()?['name'] ?? "Unknown Municipality";
+          municipalityName =
+              docSnapshot.data()?['name'] ?? "Unknown Municipality";
           provinceName = docSnapshot.data()?['province'] ?? "Unknown Province";
         });
       } else {
@@ -75,7 +77,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.white,
-                    child: Icon(Icons.person, size: 40, color: Colors.blue.shade700),
+                    child: Icon(Icons.person,
+                        size: 40, color: Colors.blue.shade700),
                   ),
                   const SizedBox(width: 10),
                   Column(
@@ -84,11 +87,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     children: [
                       Text(
                         municipalityName, // Fetch and display municipality name
-                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
                         provinceName, // Fetch and display province name
-                        style: const TextStyle(color: Colors.white70, fontSize: 14),
+                        style: const TextStyle(
+                            color: Colors.white70, fontSize: 14),
                       ),
                     ],
                   ),
@@ -190,23 +195,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: color, size: 40),
-            const SizedBox(height: 8),
+            Icon(icon, color: color, size: 24),
+            const SizedBox(height: 4),
             Text(
               title,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
                 color: color,
               ),
             ),
-            const SizedBox(height: 4),
-            Text(
-              subtitle,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 14, color: Colors.black87),
-            ),
-            const SizedBox(height: 8),
+            // Text(
+            //   subtitle,
+            //   textAlign: TextAlign.center,
+            //   style: const TextStyle(fontSize: 4, color: Colors.black87),
+            // ),
             TextButton(
               onPressed: () {
                 if (title == 'Total Complaints') {

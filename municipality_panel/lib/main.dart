@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:municipality_panel/screens/complaints_screen.dart';
 import 'package:municipality_panel/screens/dashboard_screen.dart';
+
 import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'screens/signup_screen.dart';
@@ -31,8 +32,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
         '/dashboard': (context) => const DashboardScreen(),
-'/complaints': (context) => ComplaintsScreen(municipalityId: fixedMunicipalityId),
-
+        '/complaints': (context) =>
+            const ComplaintsScreen(municipalityId: fixedMunicipalityId),
       },
     );
   }

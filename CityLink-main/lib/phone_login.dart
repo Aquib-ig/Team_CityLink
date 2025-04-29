@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({super.key});
@@ -9,7 +9,7 @@ class MyPhone extends StatefulWidget {
 }
 
 class _MyPhoneState extends State<MyPhone> {
-  final _countryCodeController = TextEditingController(text: '+977');
+  final _countryCodeController = TextEditingController(text: '+91');
   final _phoneNumberController = TextEditingController();
   String _verificationId = '';
 
@@ -26,6 +26,7 @@ class _MyPhoneState extends State<MyPhone> {
         },
         verificationFailed: (FirebaseAuthException e) {
           _showSnackBar('Verification Failed: ${e.message}');
+          print('Verification Failed: ${e.message}');
         },
         codeSent: (String verificationId, int? resendToken) {
           setState(() => _verificationId = verificationId);
@@ -77,16 +78,16 @@ class _MyPhoneState extends State<MyPhone> {
               ),
             ),
             const SizedBox(height: 10),
-Center(
-  child: Text(
-    'We need to register your phone before starting',
-    style: TextStyle(
-      fontSize: 16,
-      color: Colors.grey,
-    ),
-    textAlign: TextAlign.center, // Remove this line
-  ),
-),
+            Center(
+              child: Text(
+                'We need to register your phone before starting',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+                textAlign: TextAlign.center, // Remove this line
+              ),
+            ),
             const SizedBox(height: 40),
             _buildPhoneInput(),
             const SizedBox(height: 30),

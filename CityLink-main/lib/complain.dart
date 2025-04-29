@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -189,6 +191,7 @@ class _ComplaintBoxScreenState extends State<ComplaintBoxScreen> {
       );
       Navigator.pop(context);
     } catch (e) {
+      log(e.toString());
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error submitting complaint: $e")),
       );
@@ -207,7 +210,10 @@ class _ComplaintBoxScreenState extends State<ComplaintBoxScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Complaint Box', style: TextStyle(color: Colors.white),),
+        title: const Text(
+          'Complaint Box',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.green.shade700,
       ),
       body: Container(
@@ -237,7 +243,10 @@ class _ComplaintBoxScreenState extends State<ComplaintBoxScreen> {
                   "Public Complaint",
                   "Sanitation Issue",
                   "Infrastructure Damage"
-                ].map((type) => DropdownMenuItem(value: type, child: Text(type))).toList(),
+                ]
+                    .map((type) =>
+                        DropdownMenuItem(value: type, child: Text(type)))
+                    .toList(),
                 onChanged: (value) => setState(() => selectedType = value!),
                 decoration: const InputDecoration(
                   labelText: "Complaint Type",
@@ -267,7 +276,8 @@ class _ComplaintBoxScreenState extends State<ComplaintBoxScreen> {
               if (selectedImage != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Image.file(selectedImage!, height: 150, width: 150, fit: BoxFit.cover),
+                  child: Image.file(selectedImage!,
+                      height: 150, width: 150, fit: BoxFit.cover),
                 ),
               const SizedBox(height: 10),
               ElevatedButton.icon(
@@ -275,15 +285,16 @@ class _ComplaintBoxScreenState extends State<ComplaintBoxScreen> {
                 icon: const Icon(Icons.video_library),
                 label: const Text("Select Video from Gallery (Optional)"),
               ),
-ElevatedButton.icon(
-  onPressed: () => _pickVideo(ImageSource.camera),
-  icon: const Icon(Icons.videocam),
-  label: const Text("Capture Video (Optional)"),
-),
+              ElevatedButton.icon(
+                onPressed: () => _pickVideo(ImageSource.camera),
+                icon: const Icon(Icons.videocam),
+                label: const Text("Capture Video (Optional)"),
+              ),
               if (selectedVideo != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Text("Video Selected: ${selectedVideo!.path.split('/').last}"),
+                  child: Text(
+                      "Video Selected: ${selectedVideo!.path.split('/').last}"),
                 ),
               const SizedBox(height: 10),
               Row(
@@ -291,7 +302,8 @@ ElevatedButton.icon(
                   ElevatedButton.icon(
                     onPressed: isRecording ? _stopRecording : _startRecording,
                     icon: Icon(isRecording ? Icons.stop : Icons.mic),
-                    label: Text(isRecording ? "Stop Recording" : "Record Voice"),
+                    label:
+                        Text(isRecording ? "Stop Recording" : "Record Voice"),
                   ),
                   if (recordedAudioPath != null)
                     Padding(

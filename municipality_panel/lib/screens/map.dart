@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:municipality_panel/screens/dashboard_screen.dart'; // For getting user location
 
 class MapScreen extends StatefulWidget {
@@ -98,7 +98,8 @@ class _MapScreenState extends State<MapScreen> {
       setState(() {
         _polygonLatLngs.removeLast();
         _markers.removeWhere(
-          (marker) => marker.markerId.value == (_polygonLatLngs.length).toString(),
+          (marker) =>
+              marker.markerId.value == (_polygonLatLngs.length).toString(),
         );
         _updatePolygon();
       });
@@ -115,45 +116,48 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   /// Saves the mapped boundary to Firestore
- /// Saves the mapped boundary to Firestore and navigates to the dashboard
-/// Saves the mapped boundary to Firestore
-/// 
-Future<void> _saveMunicipalityBoundary() async {
-  if (_polygonLatLngs.isEmpty) {
-    _showSnackbar('Please map the boundary first.');
-    return;
-  }
+  /// Saves the mapped boundary to Firestore and navigates to the dashboard
+  /// Saves the mapped boundary to Firestore
+  ///
+  Future<void> _saveMunicipalityBoundary() async {
+    if (_polygonLatLngs.isEmpty) {
+      _showSnackbar('Please map the boundary first.');
+      return;
+    }
 
-  setState(() {
-    _isSaving = true;
-  });
-
-  // Convert polygon points to a storable format
-  final boundaryData = _polygonLatLngs
-      .map((latLng) => {'latitude': latLng.latitude, 'longitude': latLng.longitude})
-      .toList();
-
-  try {
-    // Save boundary to Firestore for the fixed municipality
-    const String fixedMunicipalityId = "1234567";
-    await FirebaseFirestore.instance.collection('Municipalities').doc(fixedMunicipalityId).update({
-      'boundary': boundaryData,
-    });
-
-    _showSnackbar('Boundary saved successfully!');
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const DashboardScreen()),
-    );
-  } catch (e) {
-    _showSnackbar('Failed to save boundary: $e');
-  } finally {
     setState(() {
-      _isSaving = false;
+      _isSaving = true;
     });
-  }
-}
 
+    // Convert polygon points to a storable format
+    final boundaryData = _polygonLatLngs
+        .map((latLng) =>
+            {'latitude': latLng.latitude, 'longitude': latLng.longitude})
+        .toList();
+
+    try {
+      // Save boundary to Firestore for the fixed municipality
+      const String fixedMunicipalityId = "1234567";
+      await FirebaseFirestore.instance
+          .collection('Municipalities')
+          .doc(fixedMunicipalityId)
+          .update({
+        'boundary': boundaryData,
+      });
+
+      _showSnackbar('Boundary saved successfully!');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const DashboardScreen()),
+      );
+    } catch (e) {
+      _showSnackbar('Failed to save boundary: $e');
+    } finally {
+      setState(() {
+        _isSaving = false;
+      });
+    }
+  }
 
   /// Shows a snackbar with a message
   void _showSnackbar(String message) {
@@ -233,7 +237,8 @@ Future<void> _saveMunicipalityBoundary() async {
                       ),
                       const SizedBox(height: 8),
                       TextButton(
-                        onPressed: () => setState(() => _showInstructions = false),
+                        onPressed: () =>
+                            setState(() => _showInstructions = false),
                         child: const Text('Got it!'),
                       ),
                     ],

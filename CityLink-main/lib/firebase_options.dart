@@ -42,6 +42,42 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCiIqm34TSZzv2TneypttwG2nLvgS-tZM0',
+    appId: '1:484370225906:web:ac53b92381409a17ff0e6b',
+    messagingSenderId: '484370225906',
+    projectId: 'lity-link-app',
+    authDomain: 'lity-link-app.firebaseapp.com',
+    storageBucket: 'lity-link-app.firebasestorage.app',
+    measurementId: 'G-SZLSYG4DV9',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDG4c-MVXb0C7quo9dRGqkWyujvM0N-Jy4',
+    appId: '1:484370225906:android:285df3268922af4dff0e6b',
+    messagingSenderId: '484370225906',
+    projectId: 'lity-link-app',
+    storageBucket: 'lity-link-app.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCkt3ORjW4kZDpsXI0WJVJ0-z3csFaonBA',
+    appId: '1:484370225906:ios:1dd65b83450ee8d6ff0e6b',
+    messagingSenderId: '484370225906',
+    projectId: 'lity-link-app',
+    storageBucket: 'lity-link-app.firebasestorage.app',
+    iosBundleId: 'com.example.maincitylink',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCkt3ORjW4kZDpsXI0WJVJ0-z3csFaonBA',
+    appId: '1:484370225906:ios:1dd65b83450ee8d6ff0e6b',
+    messagingSenderId: '484370225906',
+    projectId: 'lity-link-app',
+    storageBucket: 'lity-link-app.firebasestorage.app',
+    iosBundleId: 'com.example.maincitylink',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCiIqm34TSZzv2TneypttwG2nLvgS-tZM0',
     appId: '1:484370225906:web:a6a4ba7dd61c3f00ff0e6b',
     messagingSenderId: '484370225906',
     projectId: 'lity-link-app',
@@ -49,41 +85,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'lity-link-app.firebasestorage.app',
     measurementId: 'G-QBQ0DT3QMJ',
   );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCkt3ORjW4kZDpsXI0WJVJ0-z3csFaonBA',
-    appId: '1:484370225906:ios:e62afa3158764b20ff0e6b',
-    messagingSenderId: '484370225906',
-    projectId: 'lity-link-app',
-    storageBucket: 'lity-link-app.firebasestorage.app',
-    iosBundleId: 'com.example.municipalityPanel',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCkt3ORjW4kZDpsXI0WJVJ0-z3csFaonBA',
-    appId: '1:484370225906:ios:e62afa3158764b20ff0e6b',
-    messagingSenderId: '484370225906',
-    projectId: 'lity-link-app',
-    storageBucket: 'lity-link-app.firebasestorage.app',
-    iosBundleId: 'com.example.municipalityPanel',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDG4c-MVXb0C7quo9dRGqkWyujvM0N-Jy4',
-    appId: '1:484370225906:android:78c806e4795da3c9ff0e6b',
-    messagingSenderId: '484370225906',
-    projectId: 'lity-link-app',
-    storageBucket: 'lity-link-app.firebasestorage.app',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCiIqm34TSZzv2TneypttwG2nLvgS-tZM0',
-    appId: '1:484370225906:web:13b2a3bec6fdb7f7ff0e6b',
-    messagingSenderId: '484370225906',
-    projectId: 'lity-link-app',
-    authDomain: 'lity-link-app.firebaseapp.com',
-    storageBucket: 'lity-link-app.firebasestorage.app',
-    measurementId: 'G-4QG6RCDC36',
-  );
-
 }
